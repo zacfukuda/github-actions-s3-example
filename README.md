@@ -1,3 +1,5 @@
+# GitHub Actions S3 Example
+
 Example codebase to test, build, deploy your TypeScript/JavaScript codes(static assets) to AWS S3 with GitHub Actions using OpenID Connect(OIDC).
 
 The workflow is:
@@ -72,14 +74,9 @@ The inline permission you must attach to your IAM role:
 
 ## Resources
 
-### OIDC
-
 - [Configure AWS Credentials for GitHub Actions](https://github.com/aws-actions/configure-aws-credentials)
 - [Configuring OpenID Connect in Amazon Web Services](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services)
 - [Create an OpenID Connect (OIDC) identity provider in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html)
 - [Create a role for OpenID Connect federation (console)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html)
 - [Use IAM roles to connect GitHub Actions to actions in AWS](https://aws.amazon.com/jp/blogs/security/use-iam-roles-to-connect-github-actions-to-actions-in-aws/)
-
-### Caching
-
-- https://github.com/actions/setup-node
+- [setup-node](https://github.com/actions/setup-node)
