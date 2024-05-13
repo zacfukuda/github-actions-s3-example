@@ -1,0 +1,42 @@
+name: Deploy to S3
+run-name: ${{ github.actor }} is deploying to S3
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+env:
+  AWS_REGION: YOUR_AWS_REGION
+  IAM_ROLE_ARN: arn:aws:iam::YOUR_AWS_ACCOUNT_ID:role/YOUR_IAM_ROLE_NAME
+  S3_BUCKET_NAME: YOUR_BUCKET_NAME
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+      - name: Install dependencies
+        run: yarn install
+      - name: Linting
+        run: yarn lint
+      - name: Unit testing
+        run: yarn test
+      - name: Build
+        run: yarn build
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.IAM_ROLE_ARN }}
+          role-session-name: samplerolesession
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Deploy to S3
+        run: aws s3 sync ./build/ s3://${{ env.S3_BUCKET_NAME }}/build --delete
