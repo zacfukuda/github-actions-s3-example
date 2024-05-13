@@ -2,19 +2,21 @@
 
 Example codebase to test, build, deploy your TypeScript/JavaScript codes(static assets) to AWS S3 with GitHub Actions using OpenID Connect(OIDC).
 
-The workflow is:
+The tutorial is available at [GitHub Actions: Test, Build, Deploy to AWS S3](https://www.zacfukuda.com/blog/github-actions-s3).
 
-1. Install Node package dependencies
+## Workflow
+
+1. Install Node.js package dependencies
 2. (ES)Lint the source code
 3. Test the source code with Jest
 4. Build(compile) the source code
-5. Deploy built files to the S3 bucket
+5. Deploy built files(artifact) to the S3 bucket
 
 ## Steps
 
 1. Create a GitHub repository
 2. Create an S3 bucket
-3. Add an identity provider to AWS
+3. Add an identity provider
 4. Update the workflow
 
 ## Example JSONs
